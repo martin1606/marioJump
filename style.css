@@ -1,0 +1,121 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.game{
+    width: 100%;
+    height: 100vh;
+    border-bottom: 100px solid rgb(24,174,24);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#87CEEB, #E0F6FF);
+}
+
+.cloud-game{
+    width: 500px;
+    position: absolute;
+    animation: cloud-animation 20s infinite linear;
+
+}
+
+@keyframes cloud-animation{
+    from{
+        right: -500px;
+    }
+    to{
+        right: 100%;
+    }
+}
+
+.super-mario{
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+}
+
+.mario-jump {
+    animation: mario-animation 500ms ease-out;
+}
+
+@keyframes mario-animation {
+    0%{
+        bottom: 0%;
+    }
+    40%{
+        bottom: 180px;
+    }
+    50%{
+        bottom: 180px;
+    }
+    60%{
+        bottom: 180px;
+    }
+    70%{
+        bottom: 180px;
+    }
+    100%{
+        bottom: 0%;
+    }
+}
+
+.mario-dies {
+    animation: mario-die 1s ease-out;
+}
+
+@keyframes mario-die {
+    0%{
+        bottom: 0%;
+    }
+    50%{
+        bottom: 200px;
+    }
+    100%{
+        bottom: 0%;
+    }
+}
+
+.pipe-game{
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    animation: pipe-animation 1.5s infinite linear;
+}
+
+@keyframes pipe-animation{
+    from{
+        right: -80px;
+    }
+    to{
+        right: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .super-mario{
+        width: 75px;
+    }
+
+    .cloud-game{
+        width: 250px;
+    }
+
+    .game{
+        border-bottom: 50px solid rgb(24,174,24);
+    }
+
+    .pipe-game{
+        width: 40px;
+    }
+
+    @keyframes cloud-animation{
+        from{
+            right: -240px;
+        }
+        to{
+            right: 100%;
+        }
+    }
+}
