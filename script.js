@@ -1,7 +1,7 @@
 const mario = document.querySelector(".super-mario");
 const pipe = document.querySelector(".pipe-game");
 
-var pipeEnter = Math.floor((Math.random()* 3)+ 1);
+var pipeEnter = Math.floor((Math.random()* 3)+ 2);
 pipe.style.animation = `pipe-animation ${pipeEnter}s infinite linear`;
 console.log(pipeEnter);
 

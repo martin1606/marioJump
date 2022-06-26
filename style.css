@@ -80,8 +80,7 @@
 .pipe-game{
     position: absolute;
     bottom: 0;
-    width: 80px;
-    /*animation: pipe-animation 1.5s infinite linear;*/
+    width: 80px
 }
 
 @keyframes pipe-animation{
