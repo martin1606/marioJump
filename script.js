@@ -1,6 +1,10 @@
 const mario = document.querySelector(".super-mario");
 const pipe = document.querySelector(".pipe-game");
 
+var pipeEnter = Math.floor((Math.random()* 3)+ 1);
+pipe.style.animation = `pipe-animation ${pipeEnter}s infinite linear`;
+console.log(pipeEnter);
+
 const jump = () => {
     mario.classList.add("mario-jump");
     
@@ -24,15 +28,15 @@ const loopGame = setInterval(() => {
         pipe.style.animation = "none";
         pipe.style.left = `${pipePosition}px`;
 
-        mario.style.animation = "none";
-        mario.style.bottom = `${marioPosition}px`;
+        mario.style.animation = 'mario-die 2s';
 
         mario.src = "./img/mario-game-over.png";
         mario.style.width = "75px";
         mario.style.marginLeft = "45px";
     
-        clearInterval(loopGame)
-        }
+        clearInterval(loopGame);
+        
+        }}
     if (window.matchMedia("(max-width: 800px)")){
         const pipePosition = pipe.offsetLeft;
         const marioPosition = +window
@@ -44,16 +48,16 @@ const loopGame = setInterval(() => {
         pipe.style.animation = "none";
         pipe.style.left = `${pipePosition}px`;
 
-        mario.style.animation = "none";
-        mario.style.bottom = `${marioPosition}px`;
+        mario.style.animation = 'mario-die 2s';
 
         mario.src = "./img/mario-game-over.png";
         mario.style.width = "33px";
         mario.style.marginLeft = "22px";
-    
-        clearInterval(loopGame)
+            
+        
+        clearInterval(loopGame);
+        
     }
-}}
-}, 10);
+}}, 10);
 
 document.addEventListener("keydown", jump);

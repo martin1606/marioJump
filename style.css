@@ -67,13 +67,13 @@
 
 @keyframes mario-die {
     0%{
-        bottom: 0%;
+        bottom: 50px;
     }
     50%{
-        bottom: 200px;
+        bottom: 300px;
     }
     100%{
-        bottom: 0%;
+        bottom: -10px;
     }
 }
 
@@ -81,7 +81,7 @@
     position: absolute;
     bottom: 0;
     width: 80px;
-    animation: pipe-animation 1.5s infinite linear;
+    /*animation: pipe-animation 1.5s infinite linear;*/
 }
 
 @keyframes pipe-animation{
