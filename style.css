@@ -6,7 +6,7 @@
 
 .game{
     width: 100%;
-    height: 100vh;
+    height: 85vh;
     border-bottom: 100px solid rgb(24,174,24);
     margin: 0 auto;
     position: relative;
@@ -18,7 +18,6 @@
     width: 500px;
     position: absolute;
     animation: cloud-animation 20s infinite linear;
-
 }
 
 @keyframes cloud-animation{
@@ -37,24 +36,24 @@
 }
 
 .mario-jump {
-    animation: mario-animation 500ms ease-out;
+    animation: mario-animation 600ms ease-out;
 }
 
 @keyframes mario-animation {
     0%{
         bottom: 0%;
     }
-    40%{
+    30%{
         bottom: 180px;
     }
     50%{
         bottom: 180px;
     }
     60%{
-        bottom: 180px;
+        bottom: 170px;
     }
     70%{
-        bottom: 180px;
+        bottom: 100px;
     }
     100%{
         bottom: 0%;
@@ -80,7 +79,8 @@
 .pipe-game{
     position: absolute;
     bottom: 0;
-    width: 80px
+    width: 80px;
+    right: -80px;
 }
 
 @keyframes pipe-animation{

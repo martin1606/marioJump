@@ -1,9 +1,12 @@
 const mario = document.querySelector(".super-mario");
 const pipe = document.querySelector(".pipe-game");
 
-var pipeEnter = Math.floor((Math.random()* 3)+ 2);
-pipe.style.animation = `pipe-animation ${pipeEnter}s infinite linear`;
-console.log(pipeEnter);
+var timeRandom = setInterval(() => {
+    console.log(timeRandom);
+    timeRandom = Math.floor((Math.random()* 2) + 1);
+    pipe.style.animation = `pipe-animation ${timeRandom}s infinite linear`;
+}, 2000);
+
 
 const jump = () => {
     mario.classList.add("mario-jump");
@@ -16,15 +19,19 @@ const jump = () => {
 
 
 
+    
+
 const loopGame = setInterval(() => {
+
     if (window.matchMedia("(min-width: 800px)")){
         const pipePosition = pipe.offsetLeft;
         const marioPosition = +window
             .getComputedStyle(mario)
-            .bottom.replace("px", "")
+            .bottom.replace("px", "");
         
 
-        if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
+
+        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 80) {
         pipe.style.animation = "none";
         pipe.style.left = `${pipePosition}px`;
 
@@ -32,7 +39,7 @@ const loopGame = setInterval(() => {
 
         mario.src = "./img/mario-game-over.png";
         mario.style.width = "75px";
-        mario.style.marginLeft = "45px";
+        mario.style.marginLeft = "50px";
     
         clearInterval(loopGame);
         
@@ -44,7 +51,7 @@ const loopGame = setInterval(() => {
             .bottom.replace("px", "")
         
 
-        if (pipePosition <= 30 && pipePosition > 0 && marioPosition < 10) {
+        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 80) {
         pipe.style.animation = "none";
         pipe.style.left = `${pipePosition}px`;
 
@@ -52,7 +59,7 @@ const loopGame = setInterval(() => {
 
         mario.src = "./img/mario-game-over.png";
         mario.style.width = "33px";
-        mario.style.marginLeft = "22px";
+        mario.style.marginLeft = "50px";
             
         
         clearInterval(loopGame);
