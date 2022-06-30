@@ -44,7 +44,7 @@ const loopGame = setInterval(() => {
         
 
 
-        if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 80) {
+        if (pipePosition <= 90 && pipePosition > 0 && marioPosition < 90) {
         pipe.style.animation = "none";
         pipe.style.left = `${pipePosition}px`;
 
@@ -52,7 +52,7 @@ const loopGame = setInterval(() => {
 
         mario.src = "./img/mario-game-over.png";
         if (window.matchMedia("(max-width: 800px)").matches){
-            mario.style.width = "35px";
+            mario.style.width = "45px";
         }
         else{
             mario.style.width = "75px";
