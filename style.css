@@ -83,6 +83,8 @@ body{
     grid-area: area1;
     font-size: 20px;
     z-index: 1;
+    word-spacing: -9px;
+    letter-spacing: -1px;
 }
 
 #start{
