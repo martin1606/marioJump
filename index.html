@@ -8,11 +8,18 @@
     <title>Mario Jump</title>
 </head>
 <body>
-    <div class="game" onclick="jump()">
+    <div class="game" onclick="">
         <img src="./img/clouds-gamer.png" alt="" class="cloud-game">
         <img src="./img/super-mario.gif" alt="" class="super-mario">
         <img src="./img/pipe-game.png" alt="" class="pipe-game">
+        <div id="buttons">
+            <div class="colorbox"></div>
+            <p class="title">SUPER MARIO</p>
+            <button id="start" onclick="initiate()">Start</button>
+            <button id="reset" onclick="reset()">Inicio</button>
+        </div>
     </div>
+    
     <script src="./script.js"></script>
 </body>
 </html>
