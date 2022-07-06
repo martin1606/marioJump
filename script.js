@@ -1,5 +1,6 @@
 const mario = document.querySelector(".super-mario");
 const pipe = document.querySelector(".pipe-game");
+const bullet = document.querySelector(".bullet");
 const game = document.querySelector(".game");
 const resetb = document.querySelector("#reset");
 const body = document.body; 
@@ -7,7 +8,8 @@ const buttonB = document.querySelector('#buttons');
 const startB = document.querySelector('#start');
 const resetB = document.querySelector('#reset');
 const title = document.querySelector('.title');
-
+var counter = 0;
+const points = document.querySelector('#points');
 
 if (window.matchMedia("(max-width: 800px)").matches){
     game.style.height = '85vh';
@@ -17,8 +19,12 @@ function reset(){
     location.reload(initiate());
 }
 
+points.style.display = 'none';
+
 function initiate(){
+    points.style.display = 'flex';
     buttonB.style.display = 'none';
+    points.style.display = 'flex'
     
     const audio = document.querySelector('#audio');
     audio.play();
@@ -31,15 +37,17 @@ function initiate(){
     }
     pipe.style.animationDelay = '1s';
     
+    const audioJump = document.querySelector('#audioJ');
+    audioJump.volume = 0.3;
+
     const jump = () => {
-        const audioJump = document.querySelector('#audioJ');
-        audioJump.volume = 0.8;
+        
         mario.classList.add("mario-jump");
         setTimeout(() => {
             
             audioJump.play();
             
-        }, 30);
+        }, 10);
         
         
         setTimeout(() => {
@@ -51,27 +59,31 @@ function initiate(){
 
     const loopGame = setInterval(() => {
         const pipePosition = pipe.offsetLeft;
+        const bulletPosition = bullet.offsetLeft;
         const marioPosition = +window
             .getComputedStyle(mario)
             .bottom.replace("px", "");
        
-            
-    if (pipePosition < 10 && pipePosition > 0){
-        var counter = 0;
-        function more1 (){
+           
+    if (pipePosition < 15 && pipePosition > 0){
         counter ++;
         console.log(counter);
-        }
-        more1(parseInt);
-        const points = document.querySelector('#points');
-        points.style.display = 'flex'
-        points.textContent = `Pontos: ${counter}`
+        
     }   
+        points.textContent = `Pontos: ${counter}`
+        
+    if (counter >= 20){
+        bullet.style.animation = `bullet-animation 3s infinite linear`;
+        game.style.animation = `night 3s forwards`;
+    }
+    
 
-        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 70)
+        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 70 || bulletPosition <= 80 && bulletPosition > 0 && marioPosition > 150)
             {
                 pipe.style.animation = "none";
+                bullet.style.animation = "none";
                 pipe.style.left = `${pipePosition}px`;
+                bullet.style.left = `${bulletPosition}px`;
 
                 mario.style.animation = 'mario-die 2s';
 

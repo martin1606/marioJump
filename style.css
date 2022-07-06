@@ -23,14 +23,23 @@ body{
     grid-template-columns: auto 50% auto;  
 }
 
+@keyframes night{
+    0% {
+        background: linear-gradient(#87CEEB, #E0F6FF);
+    }
+    100%{
+        background: linear-gradient(#375f70, #b0c6cf);
+    }
+}
+
 #points{
     display: flex;
     padding: 7px;
     font-size: 15px;
     position: absolute;
-    width: 180px;
+    width: 250px;
     height: 30px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 .cloud-game{
@@ -73,6 +82,13 @@ body{
     height: 100%;
     opacity: .3;
     z-index: 0;
+}
+
+.bullet{
+    position: absolute;
+    width: 130px;
+    bottom: 170px;
+    right: -130px;
 }
 
 #buttons{
@@ -159,6 +175,15 @@ body{
     }
 }
 
+@keyframes bullet-animation{
+    from{
+        right: -70px;
+    }
+    to{
+        right: 100%;
+    }
+}
+
 @media only screen and (max-width: 800px){
     .super-mario{
         width: 75px;
@@ -174,6 +199,10 @@ body{
 
     .pipe-game{
         width: 40px;
+    }
+
+    .bullet{
+        width: 70px;
     }
 
     @keyframes cloud-animation{
