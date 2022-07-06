@@ -19,6 +19,11 @@ function reset(){
 
 function initiate(){
     buttonB.style.display = 'none';
+    
+    const audio = document.querySelector('#audio');
+    audio.play();
+    
+
     if (window.matchMedia("(max-width: 800px)").matches){
         pipe.style.animation = `pipe-animation 1.5s infinite linear`;
     } else{
@@ -27,7 +32,15 @@ function initiate(){
     pipe.style.animationDelay = '1s';
     
     const jump = () => {
+        const audioJump = document.querySelector('#audioJ');
+        audioJump.volume = 0.8;
         mario.classList.add("mario-jump");
+        setTimeout(() => {
+            
+            audioJump.play();
+            
+        }, 30);
+        
         
         setTimeout(() => {
             mario.classList.remove("mario-jump");
@@ -41,11 +54,18 @@ function initiate(){
         const marioPosition = +window
             .getComputedStyle(mario)
             .bottom.replace("px", "");
+       
             
     if (pipePosition < 10 && pipePosition > 0){
-        let counter = 0;
-        counter += parseInt(1);  
-        console.log((counter)); 
+        var counter = 0;
+        function more1 (){
+        counter ++;
+        console.log(counter);
+        }
+        more1(parseInt);
+        const points = document.querySelector('#points');
+        points.style.display = 'flex'
+        points.textContent = `Pontos: ${counter}`
     }   
 
         if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 70)
@@ -63,12 +83,20 @@ function initiate(){
                     mario.style.width = "75px";
                 }
                 mario.style.marginLeft = "50px";
-            
+                
                 clearInterval(loopGame); 
                 
+                audio.pause();
+                const gameOvera = document.querySelector('#audioGO');
+                gameOvera.play();
+            
                 startB.style.display = 'none';
                 buttonB.style.display = 'grid';
                 title.textContent = 'GAME OVER';
+                 
+
+                
+                    
 
     }}, 10);
             

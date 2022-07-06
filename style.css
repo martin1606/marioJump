@@ -23,6 +23,16 @@ body{
     grid-template-columns: auto 50% auto;  
 }
 
+#points{
+    display: flex;
+    padding: 7px;
+    font-size: 15px;
+    position: absolute;
+    width: 180px;
+    height: 30px;
+    border: 1px solid black;
+}
+
 .cloud-game{
     width: 500px;
     position: absolute;
@@ -129,7 +139,7 @@ body{
         bottom: 300px;
     }
     100%{
-        bottom: -10px;
+        bottom: 0px;
     }
 }
 
