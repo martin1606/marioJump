@@ -29,31 +29,44 @@ function initiate(){
     const audio = document.querySelector('#audio');
     audio.play();
     
+    const math = () => {
+        let mathInt = Math.floor(Math.random() * 3) + 0;
+        let mathDec = Math.floor(Math.random() * 99) + 1;
+        console.log(parseFloat(`${mathInt}.${mathDec}`));
+    }
 
     if (window.matchMedia("(max-width: 800px)").matches){
         pipe.style.animation = `pipe-animation 1.5s infinite linear`;
+        pipe.style.animationDelay = `${math}s` 
     } else{
         pipe.style.animation = `pipe-animation 1.7s infinite linear`;
     }
-    pipe.style.animationDelay = '1s';
+    
     
     const audioJump = document.querySelector('#audioJ');
+    const audioBullet = document.querySelector('#audioB');
     audioJump.volume = 0.3;
 
-    const jump = () => {
-        
+    const jump = () => {      
         mario.classList.add("mario-jump");
-        setTimeout(() => {
-            
-            audioJump.play();
-            
-        }, 10);
-        
-        
+        setTimeout(() => {           
+            audioJump.play();           
+        }, 10);        
         setTimeout(() => {
             mario.classList.remove("mario-jump");
         }, 740);
         return jump;
+    };
+
+    const jump2 = () => {       
+        mario.classList.add("mario-jump2");
+        setTimeout(() => {           
+            audioBullet.play();         
+        }, 10);       
+        setTimeout(() => {
+            mario.classList.remove("mario-jump2");
+        }, 740);
+        return jump2;
     };
     
 
@@ -63,22 +76,20 @@ function initiate(){
         const marioPosition = +window
             .getComputedStyle(mario)
             .bottom.replace("px", "");
-       
-           
-    if (pipePosition < 15 && pipePosition > 0){
-        counter ++;
-        console.log(counter);
         
-    }   
-        points.textContent = `Pontos: ${counter}`
-        
-    if (counter >= 20){
+    if (counter >= 5){
         bullet.style.animation = `bullet-animation 3s infinite linear`;
         game.style.animation = `night 3s forwards`;
     }
     
+    if (marioPosition > 130 && bulletPosition <= 80 && bulletPosition >= 50){
+        jump2();      
+    } else if (marioPosition < 130 && bulletPosition <= 80 && bulletPosition >= 50) {
+        document.addEventListener("keydown", jump);
+        document.addEventListener("click", jump);
+    }
 
-        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 70 || bulletPosition <= 80 && bulletPosition > 0 && marioPosition > 150)
+        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 70 || bulletPosition <= 80 && bulletPosition > 0 && marioPosition >= 80 && marioPosition <= 100)
             {
                 pipe.style.animation = "none";
                 bullet.style.animation = "none";
@@ -115,3 +126,11 @@ function initiate(){
     document.addEventListener("keydown", jump);
     document.addEventListener("click", jump);
 };
+
+
+pipe.addEventListener('animationiteration', function(){
+    counter += 5;
+    console.log(counter);
+    points.textContent = `Pontos: ${counter}`;
+})
+
