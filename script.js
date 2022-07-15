@@ -52,7 +52,7 @@ function initiate(){
         }, 10);        
         setTimeout(() => {
             mario.classList.remove("mario-jump");
-        }, 740);
+        }, 910);
         return jump;
     };
 
@@ -63,7 +63,7 @@ function initiate(){
         }, 10);       
         setTimeout(() => {
             mario.classList.remove("mario-jump2");
-        }, 740);
+        }, 910);
         return jump2;
     };
 
@@ -74,6 +74,25 @@ function initiate(){
         }, 800);
         return bulletDies;
     };
+
+    
+        function stopPipe(callback){
+            setTimeout(() => {
+                callback();
+            }, 4600);
+            pipe.style.animation = `pipe-animation 2.3s forwards linear`;
+        }
+        function startPipe (){
+            pipe.style.animation = `pipe-animation 2.3s infinite linear`;
+            
+        }
+    bowser.addEventListener('animationstart', () => {
+        stopPipe(startPipe);
+    });
+        
+    
+        
+    
     
     const loopGame = setInterval(() => {
         const pipePosition = pipe.offsetLeft;
@@ -85,8 +104,9 @@ function initiate(){
         
     if (counter >= 20){
         bullet.classList.add("bulletNormal");
+        hammer.style.animationDelay = '1.6s'; 
         
-        hammer.style.animationDelay = '1.6s';       
+
         if (marioPosition > 130 && bulletPosition <= 80 && bulletPosition >= 50){
             jump2(); 
             bulletDies();     

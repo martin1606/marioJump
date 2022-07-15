@@ -264,11 +264,11 @@ body{
 }
 
 .mario-jump {
-    animation: mario-animation 750ms ease-out;
+    animation: mario-animation 900ms ease-out;
 }
 
 .mario-jump2 {
-    animation: mario-animation2 750ms ease-out;
+    animation: mario-animation2 900ms ease-out;
 }
 
 
