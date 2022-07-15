@@ -8,6 +8,8 @@ const buttonB = document.querySelector('#buttons');
 const startB = document.querySelector('#start');
 const resetB = document.querySelector('#reset');
 const title = document.querySelector('.title');
+const bowser = document.querySelector('.bowser');
+const hammer = document.querySelector('.hammer');
 var counter = 0;
 const points = document.querySelector('#points');
 
@@ -29,20 +31,16 @@ function initiate(){
     const audio = document.querySelector('#audio');
     audio.play();
     
-    const math = () => {
-        let mathInt = Math.floor(Math.random() * 3) + 0;
-        let mathDec = Math.floor(Math.random() * 99) + 1;
-        console.log(parseFloat(`${mathInt}.${mathDec}`));
-    }
-
-    if (window.matchMedia("(max-width: 800px)").matches){
-        pipe.style.animation = `pipe-animation 1.5s infinite linear`;
-        pipe.style.animationDelay = `${math}s` 
-    } else{
-        pipe.style.animation = `pipe-animation 1.7s infinite linear`;
-    }
     
-    
+    function timePipe ()  {
+    if (window.matchMedia("(max-width: 800px)").matches){     
+        pipe.style.animation = `pipe-animation 2s infinite linear`;        
+    } else{    
+        pipe.style.animation = `pipe-animation 2.3s infinite linear`;
+    }};
+    timePipe();
+       
+     
     const audioJump = document.querySelector('#audioJ');
     const audioBullet = document.querySelector('#audioB');
     audioJump.volume = 0.3;
@@ -68,28 +66,47 @@ function initiate(){
         }, 740);
         return jump2;
     };
-    
 
+    const bulletDies = () => { 
+            
+        setTimeout(() => {
+            bullet.classList.remove("bulletDie");
+        }, 800);
+        return bulletDies;
+    };
+    
     const loopGame = setInterval(() => {
         const pipePosition = pipe.offsetLeft;
         const bulletPosition = bullet.offsetLeft;
+        const hammerPosition = hammer.offsetLeft;
         const marioPosition = +window
             .getComputedStyle(mario)
             .bottom.replace("px", "");
         
-    if (counter >= 5){
-        bullet.style.animation = `bullet-animation 3s infinite linear`;
-        game.style.animation = `night 3s forwards`;
-    }
-    
-    if (marioPosition > 130 && bulletPosition <= 80 && bulletPosition >= 50){
-        jump2();      
-    } else if (marioPosition < 130 && bulletPosition <= 80 && bulletPosition >= 50) {
-        document.addEventListener("keydown", jump);
-        document.addEventListener("click", jump);
+    if (counter >= 20){
+        bullet.classList.add("bulletNormal");
+        
+        hammer.style.animationDelay = '1.6s';       
+        if (marioPosition > 130 && bulletPosition <= 80 && bulletPosition >= 50){
+            jump2(); 
+            bulletDies();     
+        } else if (marioPosition < 130 && bulletPosition <= 80 && bulletPosition >= 50) {
+            document.addEventListener("keydown", jump);
+            document.addEventListener("click", jump);
+        }
+        
     }
 
-        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 70 || bulletPosition <= 80 && bulletPosition > 0 && marioPosition >= 80 && marioPosition <= 100)
+    if (counter >= 40){
+        bowser.classList.add("bowserA");
+        hammer.classList.add("hammerR");
+    }
+    
+    
+
+        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 70 || 
+            bulletPosition <= 80 && bulletPosition > 0 && marioPosition >= 80 && marioPosition <= 100 ||
+            hammerPosition <= 80 && hammerPosition > 0 && marioPosition < 40)
             {
                 pipe.style.animation = "none";
                 bullet.style.animation = "none";
@@ -117,9 +134,7 @@ function initiate(){
                 buttonB.style.display = 'grid';
                 title.textContent = 'GAME OVER';
                  
-
-                
-                    
+         
 
     }}, 10);
             
@@ -127,10 +142,19 @@ function initiate(){
     document.addEventListener("click", jump);
 };
 
+const math = () => {
+    let mathInt = Math.floor(Math.random() * 5) + 0;
+    let mathDec = Math.floor(Math.random() * 5) + 1;
+    var number = parseFloat(`${mathInt}.${mathDec}`);
+    return number;
+};
 
 pipe.addEventListener('animationiteration', function(){
     counter += 5;
     console.log(counter);
     points.textContent = `Pontos: ${counter}`;
+    console.log(math());
 })
+
+
 

@@ -84,11 +84,139 @@ body{
     z-index: 0;
 }
 
+.bowser{
+    position: absolute;
+    z-index: 3;
+    width: 300px;
+    right: -250px;
+    bottom: -15px;
+}
+
+.bowserA{
+    animation: bowserA 2s;
+}
+
+@keyframes bowserA {
+    0%{
+        right: -250px;
+        bottom: -15px;
+    }
+    10%{
+        right:  0px;
+        bottom: -15px;
+    }
+    20%{
+        right:  0px;
+        bottom: -15px;
+    }
+    30%{
+        right:  0px;
+        bottom: -15px;
+    }
+    40%{
+        right:  0px;
+        bottom: -15px;
+    }
+    50%{
+        right:  0px;
+        bottom: 50px;
+    }
+    60%{
+        right:  0px;
+        bottom: -15px;
+    }
+    70%{
+        right:  0px;
+        bottom: 50px;
+    }
+    80%{
+        right:  0px;
+        bottom: -15px;
+    }
+    90%{
+        right:  30px;
+        bottom: 50px;
+    }
+    100%{
+        right: -250px;
+        bottom: -15px;
+    }
+}
+
+.hammer{
+    position: absolute;
+    z-index: 2;
+    width: 120px;
+    right: -200px;
+    bottom: 15px;
+    
+}
+
+.hammerR{
+    animation: hammerR 3.5s linear;
+}
+
+@keyframes hammerR{
+    0%{
+        right: 10%;
+        bottom: 22%;
+        transform: rotate(0deg);
+    }
+    12.5%{
+        right: 15%;
+        bottom: 55%;
+        transform: rotate(-360deg);
+    }
+    25%{
+        right: 20%;
+        bottom: 40%;
+        transform: rotate(-720deg);
+    }
+    37.5%{
+        right: 30%;
+        bottom: 20%;
+        transform: rotate(-1080deg);
+    }
+    50%{
+        right: 30%;
+        bottom: 0%;
+        transform: rotate(-1440deg);
+    }
+    62.5%{
+        right: 30%;
+        bottom: -2%;
+        transform: rotate(-1800deg);
+    }
+    75%{
+        right: 60%;
+        bottom: -2%;
+        transform: rotate(-2160deg);
+    }
+    87.5%{
+        right: 85%;
+        bottom: -2%;
+        transform: rotate(-2520deg);
+    }
+    100%{
+        right: 110%;
+        bottom: -2%;
+        transform: rotate(-2880deg);
+    }
+}
+
 .bullet{
     position: absolute;
     width: 130px;
     bottom: 70px;
-    right: 130px;
+    right: -130px;
+}
+
+.bulletDie{
+    animation: bulletDie 750ms ease-out;
+}
+
+.bulletNormal{
+    animation: bullet-animation 2.8s infinite linear;
 }
 
 @keyframes bulletDie {
@@ -191,6 +319,7 @@ body{
 }
 
 .pipe-game{
+    display: flex;
     position: absolute;
     bottom: 0;
     width: 80px;
@@ -208,7 +337,7 @@ body{
 
 @keyframes bullet-animation{
     from{
-        right: -70px;
+        right: -130px;
     }
     to{
         right: 100%;
@@ -229,10 +358,18 @@ body{
     }
 
     .pipe-game{
-        width: 40px;
+        width: 45px;
     }
 
     .bullet{
+        width: 70px;
+    }
+
+    .bowser{
+        width: 180px;
+    }
+
+    .hammer{
         width: 70px;
     }
 
