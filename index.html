@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="game" onclick="">
+        <div class="end"></div>
         <img src="./img/clouds-gamer.png" alt="" class="cloud-game">
         <img src="./img/super-mario.gif" alt="" class="super-mario">
         <img src="./img/pipe-game.png" alt="" class="pipe-game">
@@ -17,13 +18,14 @@
         <img src="./img/fireBall.gif" alt="" class="fireBall">
         <img src="./img/bowser2.png" alt="" class="bowser2">
         <img src="./img/hammer.png" alt="" class="hammer">
-        <img src="./img/mountain.png" alt="" class="mountain">
+        <img src="./img/mountain.png" alt="" class="mountain"> 
+        <img src="./img/marioPrincess.png" alt="" class="marioPrincess"> 
+        <img src="./img/castle.png" alt="" class="castle">
         <div id="points">Pontos: </div>
         <div id="buttons">
             <div class="colorbox"></div>
             <p class="title">SUPER <br> MARIO</p>
-            <div class="texto">Get 100 points to rescue the Princess. <br> <br>
-            Chegue até 100 pontos para resgatar a Princesa.</div>
+            <div class="texto">Chegue até 100 pontos para resgatar a Princesa.</div>
             <button id="start" onclick="pre()">Start</button>
             <button id="reset" onclick="reset()">Inicio</button>
         </div>
@@ -31,6 +33,7 @@
         <audio src="./src/jump.mp3" id="audioJ"></audio>
         <audio src="./src/game-over.mp3" id="audioGO"></audio>
         <audio src="./src/stomp.wav" id="audioB"></audio>
+        <audio src="./src/end.wav" id="end"></audio>
     </div>
     
     <script src="./script.js"></script>

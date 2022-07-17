@@ -13,12 +13,15 @@ const bowser2 = document.querySelector('.bowser2');
 const fireBall = document.querySelector('.fireBall');
 const hammer = document.querySelector('.hammer');
 const mountain = document.querySelector('.mountain');
+const marioPrincess = document.querySelector('.marioPrincess');
+const castle = document.querySelector('.castle');
+const end = document.querySelector('.end');
 const texto = document.querySelector('.texto');
+const gameOvera = document.querySelector('#audioGO');
+const endA = document.querySelector('#end');
 
 var counter = 0;
 const points = document.querySelector('#points');
-
-
 
 if (window.matchMedia("(max-width: 800px)").matches){
     game.style.height = '85vh';
@@ -68,6 +71,7 @@ function initiate(){
     }};
     timePipe();
     pipe.style.animationDelay = '1s'
+    
        
      
     const audioJump = document.querySelector('#audioJ');
@@ -115,7 +119,11 @@ function initiate(){
             pipe.style.animation = "none";  
         }
         function startPipe (){
-            timePipe();
+            if (gameOvera.duration > 0 && !gameOvera.paused){
+                console.log('si');
+            } else {
+                timePipe();
+            }
         }
     bowser.addEventListener('animationstart', () => {
         stopPipe(startPipe);
@@ -130,14 +138,10 @@ function initiate(){
         }, 2500);
     });
 
-
     //FIREBALL
     fireBall.style.animationDelay = '2.3s';
-        
-    game.style.animation = `night 5s forwards `; 
-    
-    
 
+        
     const loopGame = setInterval(() => {
         const pipePosition = pipe.offsetLeft;
         const bulletPosition = bullet.offsetLeft;
@@ -149,8 +153,34 @@ function initiate(){
         
         
         
+        if(counter >= 100){
+            pipe.style.animation = 'none';
+            clearInterval(loopGame);
+            castle.classList.add('castleCome');
+            mario.classList.add('marioFinish');
+            bullet.addEventListener('animationiteration', () => {
+                bullet.style.animation = 'none';
+            });
+            console.log('finish');
+            mario.style.animationDelay = '12s';
+            castle.style.animationDelay = '2s';
+            end.classList.add('endAppear');
+            end.style.animationDelay = '15s';
+            setTimeout(() => {
+                marioPrincess.classList.add('marioPrincessEnd');
+                marioPrincess.style.animationDelay = '2s';
+                mario.style.display = 'none';
+                castle.style.display = 'none';
+            }, 17000);
+            setTimeout(() => {
+                startB.style.display = 'none';
+                buttonB.style.display = 'grid';
+                title.textContent = 'YOU WIN!!';
+                endA.play();
+            }, 19000);
+        }
          
-        if (counter >= 5){
+        if (counter >= 35){
             bullet.classList.add('bulletNormal');
             hammer.style.animationDelay = '1.6s'; 
             
@@ -164,7 +194,7 @@ function initiate(){
         }
 
 
-        if (counter >= 30 && counter <= 34){
+        if (counter >= 25 && counter <= 29){
             bowser2.classList.add("bowser2Fire");
             fireBall.classList.add("fireBallDown");
         }
@@ -175,7 +205,7 @@ function initiate(){
             fireBall.classList.add("fireBallUp");
         }
 
-        if (counter >= 70){
+        if (counter >= 75 && counter <= 79){
             bowser.classList.add("bowserA");
             hammer.classList.add("hammerR");
         }
@@ -185,15 +215,16 @@ function initiate(){
         if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 70 || 
             bulletPosition <= 80 && bulletPosition > 0 && marioPosition >= 80 && marioPosition <= 100 ||
             hammerPosition <= 80 && hammerPosition > 0 && marioPosition < 40 ||
-            fireBallPosition <= 80 && fireBallPosition > 0 && marioPosition < 40)
+            fireBallPosition <= 80 && fireBallPosition > 0 && marioPosition < 40
+            )
             {
                 pipe.style.animation = "none";
                 bullet.style.animation = "none";
                 pipe.style.left = `${pipePosition}px`;
                 bullet.style.left = `${bulletPosition}px`;
 
+                
                 mario.style.animation = 'mario-die 2s';
-
                 mario.src = "./img/mario-game-over.png";
                 if (window.matchMedia("(max-width: 800px)").matches){
                     mario.style.width = "45px";
@@ -202,12 +233,12 @@ function initiate(){
                     mario.style.width = "75px";
                 }
                 mario.style.marginLeft = "50px";
-                
+
                 
                 clearInterval(loopGame); 
                 
                 audio.pause();
-                const gameOvera = document.querySelector('#audioGO');
+                
                 gameOvera.play();
             
                 startB.style.display = 'none';

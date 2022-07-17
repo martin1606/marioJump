@@ -23,13 +23,16 @@ body{
     grid-template-columns: auto 50% auto;  
 }
 
-.texto{
+.texto, .texto2{
     position: absolute;
     margin: 8%;
     text-align: center;
     z-index: 0;
-    margin: 8%;
-    
+    margin-top: 10%;    
+}
+
+.texto2{
+    margin-top: 20%; 
 }
 
 @keyframes night{
@@ -43,7 +46,9 @@ body{
 
 #points{
     display: flex;
+    margin: 10px;
     color: rgb(51, 42, 42);
+    border-radius: 15px;
     justify-content: center;
     background-color: gold;
     padding: 7px;
@@ -51,7 +56,7 @@ body{
     position: absolute;
     width: 200px;
     height: 30px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 .cloud-game{
@@ -65,12 +70,12 @@ body{
     z-index: 0;
     width: 2740px;
     bottom: -25px;
-    height: 80vh;
+    height: 60vh;
     right: -2740px;
 }
 
 .mountains{
-    animation: mountain 80s ease infinite;
+    animation: mountain 80s ease forwards;
 }
 
 @keyframes mountain {
@@ -112,6 +117,7 @@ body{
 
 .colorbox{
     width: 100%;
+    border-radius: 20px;
     position: absolute;
     background-color: white;
     height: 100%;
@@ -281,15 +287,15 @@ position: absolute;
     }
     60%{
         right: 65%;
-        bottom: 10%;
+        bottom: 8%;
     }
     80%{
         right: 88%;
-        bottom: 10%;
+        bottom: 8%;
     }
     100%{
         right: 110%;
-        bottom: 10%;
+        bottom: 8%;
     }
 }
 
@@ -375,9 +381,10 @@ position: absolute;
 
 #buttons{
     padding-top: 20px;
+    border-radius: 20px;
     margin-top: 70px;
     width: 100%;
-    height: 300px;
+    height: 250px;
     grid-column: 2 / span 1;
     display: grid;
     grid-template-areas: 'area1 area1'
@@ -458,6 +465,73 @@ position: absolute;
     }
 }
 
+.marioFinish{
+    animation: marioFinish 4s linear forwards;
+}
+
+@keyframes marioFinish{
+    0%{
+        left: 10px;
+    }
+    90%{
+        opacity: 1;
+    }
+    95%{
+        opacity: 0;
+    }
+    100%{
+        left: 95%;
+        opacity: 0;
+    }
+}
+
+.marioPrincess{
+    position: absolute;
+    width: 250px;
+    bottom: -5px;
+    right: 30px;
+    z-index: 2;
+    opacity: 0;
+}
+
+.marioPrincessEnd{
+    animation: marioPrincessEnd 2s forwards;
+}
+
+@keyframes marioPrincessEnd{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.end{
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.endAppear{
+    animation: endAppear 3s ease;
+}
+
+@keyframes endAppear{
+    0%{
+        opacity: 0;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
 .pipe-game{
     display: flex;
     position: absolute;
@@ -465,6 +539,26 @@ position: absolute;
     width: 80px;
     right: -80px;
     z-index: 2;
+}
+
+.castle{
+    position: absolute;
+    height: 700px;
+    bottom: 0;
+    right: -420px;
+}
+
+.castleCome{
+    animation: castleCome 10s linear forwards;
+}
+
+@keyframes castleCome {
+    from{
+        right: -420px;
+    }
+    to{
+        right: 0px;
+    }
 }
 
 @keyframes pipe-animation{
@@ -536,6 +630,22 @@ position: absolute;
     .hammer{
         width: 70px;
     }
+
+    .castle{
+        height: 350px;
+        right: -220px;
+    }
+
+    @keyframes castleCome {
+        from{
+            right: -220px;
+        }
+        to{
+            right: 0px;
+        }
+    }
+
+    
 
     @keyframes cloud-animation{
         from{
