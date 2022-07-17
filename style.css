@@ -23,6 +23,15 @@ body{
     grid-template-columns: auto 50% auto;  
 }
 
+.texto{
+    position: absolute;
+    margin: 8%;
+    text-align: center;
+    z-index: 0;
+    margin: 8%;
+    
+}
+
 @keyframes night{
     0% {
         background: linear-gradient(#87CEEB, #E0F6FF);
@@ -34,18 +43,43 @@ body{
 
 #points{
     display: flex;
+    color: rgb(51, 42, 42);
+    justify-content: center;
+    background-color: gold;
     padding: 7px;
     font-size: 15px;
     position: absolute;
-    width: 250px;
+    width: 200px;
     height: 30px;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
 }
 
 .cloud-game{
     width: 500px;
     position: absolute;
-    animation: cloud-animation 20s infinite linear;
+    animation: cloud-animation 40s infinite linear;
+}
+
+.mountain{
+    position: absolute;
+    z-index: 0;
+    width: 2740px;
+    bottom: -25px;
+    height: 80vh;
+    right: -2740px;
+}
+
+.mountains{
+    animation: mountain 80s ease infinite;
+}
+
+@keyframes mountain {
+    from{
+        right: -2740px;
+    }
+    to{
+        right: 100%;
+    }
 }
 
 @keyframes cloud-animation{
@@ -61,15 +95,16 @@ body{
     width: 150px;
     position: absolute;
     bottom: 0;
+    z-index: 1;
 }
 
 #start, #reset{
     grid-area: area2;
-    z-index: 1;
+    z-index: 3;
     font-size: 10x;
     background-color: gold;
     box-shadow: 0 0 20px gray;
-    margin: auto;
+    margin: auto auto 90px auto;
     width: 130px;
     height: 50px;
     border-radius: 10px;
@@ -143,6 +178,121 @@ body{
     }
 }
 
+.bowser2{
+position: absolute;
+    z-index: 3;
+    width: 250px;
+    right: -250px;
+    bottom: -2%;
+}
+
+.bowser2Fire{
+    animation: bowser2Fire 2.5s linear;
+}
+
+@keyframes bowser2Fire{
+    0%{
+        bottom: 0%;
+        right: -150px;
+    }
+    30%{
+        right: -100px;
+        bottom: 10%;
+    }
+    45%{
+        right: -30px;
+        bottom: 9%;
+    }
+    50%{
+        right: -10px;
+        bottom: -2%;
+    }
+    88%{
+        right: -10px;
+        bottom: -2%;
+    }
+    90%{
+        right: 10px;
+        bottom: -2%;
+    }
+    100%{
+        right: -250px;
+        bottom: -2%;
+    }
+}
+
+
+.fireBall{
+    transform: scale(-1);
+    width: 110px;
+    position: absolute;
+    bottom: 8%;
+    right: -120px;
+    z-index: 1;
+}
+
+.fireBallDown{
+    animation: fireBallDown 3s linear;
+}
+
+@keyframes fireBallDown{
+    0%{
+        right: 15%;
+        bottom: 10%;
+    }
+    20%{
+        right: 20%;
+        bottom: 10%;
+    }
+    40%{
+        right: 42%;
+        bottom: 15%;
+    }
+    60%{
+        right: 65%;
+        bottom: 0%;
+    }
+    80%{
+        right: 88%;
+        bottom: 0%;
+    }
+    100%{
+        right: 110%;
+        bottom: 0%;
+    }
+}
+
+.fireBallUp{
+    animation: fireBallUp 3s linear;
+}
+
+@keyframes fireBallUp{
+    0%{
+        right: 15%;
+        bottom: 10%;
+    }
+    20%{
+        right: 20%;
+        bottom: 10%;
+    }
+    40%{
+        right: 42%;
+        bottom: 15%;
+    }
+    60%{
+        right: 65%;
+        bottom: 10%;
+    }
+    80%{
+        right: 88%;
+        bottom: 10%;
+    }
+    100%{
+        right: 110%;
+        bottom: 10%;
+    }
+}
+
 .hammer{
     position: absolute;
     z-index: 2;
@@ -209,33 +359,23 @@ body{
     width: 130px;
     bottom: 70px;
     right: -130px;
+    z-index: 2;
+}
+
+
+.bulletNormal{
+    animation: bullet-animation 1.8s infinite linear;
 }
 
 .bulletDie{
-    animation: bulletDie 750ms ease-out;
+    animation: bulletDie 1.8s forwards;
 }
 
-.bulletNormal{
-    animation: bullet-animation 2.8s infinite linear;
-}
 
-@keyframes bulletDie {
-    0%{ 
-        left: 50px;
-        bottom: 100px;
-    }
-    50%{
-        bottom: 150px;
-    }
-    100%{
-        bottom: -100px;
-    }
-
-}
 
 #buttons{
     padding-top: 20px;
-    margin-top: 100px;
+    margin-top: 70px;
     width: 100%;
     height: 300px;
     grid-column: 2 / span 1;
@@ -324,6 +464,7 @@ body{
     bottom: 0;
     width: 80px;
     right: -80px;
+    z-index: 2;
 }
 
 @keyframes pipe-animation{
@@ -332,6 +473,21 @@ body{
     }
     to{
         right: 100%;
+    }
+}
+
+@keyframes bulletDie {
+    0%{
+        left: 60px;
+        bottom: 100px;
+    }
+    20%{
+        left: 90px;
+        bottom: 110px;
+    }
+    100%{
+        left: 100px;
+        bottom: -200px;
     }
 }
 
@@ -367,6 +523,14 @@ body{
 
     .bowser{
         width: 180px;
+    }
+
+    .bowser2{
+        width: 150px;
+    }
+
+    .fireBall{
+        width: 70px;
     }
 
     .hammer{
