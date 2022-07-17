@@ -23,17 +23,15 @@ body{
     grid-template-columns: auto 50% auto;  
 }
 
-.texto, .texto2{
+.texto{
     position: absolute;
     margin: 8%;
     text-align: center;
     z-index: 0;
-    margin-top: 10%;    
+    margin-top: 10%; 
+    line-height: 170%;  
 }
 
-.texto2{
-    margin-top: 20%; 
-}
 
 @keyframes night{
     0% {

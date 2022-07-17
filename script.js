@@ -176,6 +176,7 @@ function initiate(){
                 startB.style.display = 'none';
                 buttonB.style.display = 'grid';
                 title.textContent = 'YOU WIN!!';
+                audio.pause();
                 endA.play();
             }, 19000);
         }
